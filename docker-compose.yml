@@ -24,8 +24,8 @@ services:
             - "8888:80"
         privileged: true
         volumes:
-            # - acms_data:/var/www/html
-            - ./html:/var/www/html
+            - acms_data:/var/www/html
+            # - ./html:/var/www/html
         links:
             - mysql:mysql
         environment:
