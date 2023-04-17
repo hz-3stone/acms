@@ -1,0 +1,90 @@
+@use "global/acms-common" as acms;
+@use "global/common" as global;
+
+/* ------------------------------
+　　グローバルナビゲーション
+------------------------------ */
+.global-nav {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.global-nav-list {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  list-style: none;
+}
+
+.global-nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.global-nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+  padding: 15px 10px;
+  color: global.$color-text;
+
+  &:visited {
+    color: global.$color-text;
+  }
+  &:hover,
+  &:active,
+  &:focus {
+    color: global.$color-text;
+  }
+
+  &::after {
+    position: absolute;
+    right: 15px;
+    bottom: 0;
+    left: 15px;
+    height: 2px;
+    background: global.$color-primary;
+    transform: scaleX(0);
+    transition: transform .2s;
+    content: "";
+  }
+
+  &:hover {
+    text-decoration: none;
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  // 現在位置
+  .global-nav-item.stay &::after {
+    transform: scaleX(1);
+  }
+
+  // CTA用のスタイル
+  &.is-cta {
+    height: global.$header-height;
+    margin: 0 15px;
+    padding: 0 35px;
+    color: global.$color-text-inverse;
+    background: global.$color-primary;
+    transition: background-color .2s;
+
+    &:after {
+      content: none;
+    }
+
+    &:hover {
+      background: global.$color-primary-hover;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

@@ -1,0 +1,142 @@
+<!-- BEGIN custom_hoge -->
+
+<h2 class="acms-admin-admin-title2">testCustomUnit</h2>
+<table class="js-fieldgroup-sortable adminTable acms-admin-table-admin-edit">
+  <thead class="acms-admin-hide-sp">
+  <tr>
+    <th class="acms-admin-table-left acms-admin-admin-config-table-item-handle"> </th>
+    <th></th>
+    <th class="acms-admin-table-left acms-admin-admin-config-table-action">削除</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- BEGIN testCustomUnit:loop -->
+  <tr class="sortable-item">
+    <td class="item-handle acms-admin-table-nowrap">
+      <i class="acms-admin-icon-sort"></i>
+    </td>
+    <td>
+      <table>
+        <tr>
+          <th>custom_unit_media</th>
+          <td class="js-media-field">
+            <div class="js-droparea" data-thumbnail="{custom_unit_media@thumbnail}" data-type="image" data-thumbnail-type="{custom_unit_media@type}" data-width="200px" data-height="200px"></div>
+            <p class="js-text acms-admin-text-danger" style="display:none">許可されていないファイルのため挿入できません。</p>
+            <div class="acms-admin-margin-top-mini">
+              <button type="button" class="js-insert acms-admin-btn" data-type="image">メディアを選択</button>
+            </div>
+            <input type="hidden" name="custom_unit_media{id}[]" value="{custom_unit_media}" class="js-value" />
+          </td>
+        </tr>
+        <tr>
+          <th>custom_unit_image</th>
+          <td class="js-img_resize_cf">
+            <!-- BEGIN_IF [{custom_unit_image@path}/nem] -->
+            <div>
+              <img src="%{ARCHIVES_DIR}{custom_unit_image@path}" class="js-img_resize_preview" style="max-width:300px" alt="{custom_unit_image@alt}" />
+            </div>
+            <input type="hidden" name="custom_unit_image{id}@old[]" value="{custom_unit_image@path}" />
+            <label for="input-checkbox-custom_unit_image{id}@edit[]" class="acms-admin-form-checkbox">
+              <input type="checkbox" name="custom_unit_image{id}@edit[]" value="delete" id="input-checkbox-custom_unit_image{id}@edit[]" />
+              <i class="acms-admin-ico-checkbox"></i>削除</label>
+            <!-- ELSE -->
+            <img src="%{ARCHIVES_DIR}{custom_unit_image@path}" class="js-img_resize_preview" style="max-width:300px;display:none" />
+            <!-- END_IF -->
+            <input type="file" name="custom_unit_image{id}[]" class="js-img_resize_input" />
+            <br/>
+            <input type="hidden" name="custom_unit_image{id}@width[]" value="300" />
+          </td>
+        </tr>
+        <tr>
+          <th>custom_unit_file</th>
+          <td>
+            <!-- BEGIN_IF [{custom_unit_file@path}/nem] -->
+            <div class="acms-admin-form-checkbox">
+              <input type="checkbox" name="custom_unit_file{id}@edit[]" value="delete" id="input-checkbox-custom_unit_file{id}@edit[]" />
+              <label for="input-checkbox-custom_unit_file{id}@edit[]">
+                <i class="acms-admin-ico-checkbox"></i> 削除</label>
+            </div>
+            <a href="%{ARCHIVES_DIR}{custom_unit_file@path}">
+              <img src="/images/fileicon/file.svg" width="64" height="64" alt="file" />
+            </a>
+            <!-- END_IF -->
+            <input type="hidden" name="custom_unit_file{id}@old[]" value="{custom_unit_file@path}" />
+            <input type="file" name="custom_unit_file{id}[]" />
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td class="acms-admin-table-nowrap">
+      <input type="button" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" value="削除" />
+    </td>
+  </tr>
+  <!-- END testCustomUnit:loop -->
+  <tr class="sortable-item item-template">
+    <td class="item-handle acms-admin-table-nowrap">
+      <i class="acms-admin-icon-sort"></i>
+    </td>
+    <td>
+      <table>
+        <tr>
+          <th>custom_unit_media</th>
+          <td class="js-media-field">
+            <div class="js-droparea" data-type="image" data-width="200px" data-height="200px"></div>
+            <p class="js-text acms-admin-text-danger" style="display:none">許可されていないファイルのため挿入できません。</p>
+            <div class="acms-admin-margin-top-mini">
+              <button type="button" class="js-insert acms-admin-btn" data-type="image">メディアを選択</button>
+            </div>
+            <input type="hidden" name="custom_unit_media{id}[]" value="" class="js-value" />
+          </td>
+        </tr>
+        <tr>
+          <th>custom_unit_image</th>
+          <td class="js-img_resize_cf">
+            <img src="" style="max-width:300px;display:none" class="js-img_resize_preview" />
+            <input type="file" name="custom_unit_image{id}[]" style="max-width:300px" />
+            <br/>
+            <input type="hidden" name="custom_unit_image{id}@width[]" value="300" />
+          </td>
+        </tr>
+        <tr>
+          <th>custom_unit_file</th>
+          <td>
+            <input type="file" name="custom_unit_file{id}[]" />
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td class="acms-admin-table-nowrap">
+      <input type="button" class="item-delete acms-admin-btn-admin acms-admin-btn-admin-danger" value="削除" />
+    </td>
+  </tr>
+  </tbody>
+  <tfoot>
+  <tr>
+    <td colSpan="5">
+      <input type="button" class="item-insert acms-admin-btn-admin" value="追加" />
+    </td>
+  </tr>
+  </tfoot>
+</table>
+<input type="hidden" name="custom_unit_media{id}:extension" value="media" />
+<input type="hidden" name="@testCustomUnit{id}[]" value="custom_unit_media{id}" />
+<input type="hidden" name="unit{id}[]" value="custom_unit_media{id}" />
+<input type="hidden" name="@testCustomUnit{id}[]" value="custom_unit_image{id}@path" />
+<input type="hidden" name="@testCustomUnit{id}[]" value="custom_unit_image{id}@alt" />
+<input type="hidden" name="@testCustomUnit{id}[]" value="custom_unit_image{id}@x" />
+<input type="hidden" name="@testCustomUnit{id}[]" value="custom_unit_image{id}@y" />
+<input type="hidden" name="@testCustomUnit{id}[]" value="custom_unit_image{id}@edit" />
+<input type="hidden" name="@testCustomUnit{id}[]" value="custom_unit_image{id}@old" />
+<input type="hidden" name="custom_unit_image{id}:extension" value="image" />
+<input type="hidden" name="@testCustomUnit{id}[]" value="custom_unit_image{id}" />
+<input type="hidden" name="unit{id}[]" value="custom_unit_image{id}" />
+<input type="hidden" name="@testCustomUnit{id}[]" value="custom_unit_file{id}@path" />
+<input type="hidden" name="@testCustomUnit{id}[]" value="custom_unit_file{id}@alt" />
+<input type="hidden" name="@testCustomUnit{id}[]" value="custom_unit_file{id}@edit" />
+<input type="hidden" name="@testCustomUnit{id}[]" value="custom_unit_file{id}@old" />
+<input type="hidden" name="custom_unit_file{id}:extension" value="file" />
+<input type="hidden" name="@testCustomUnit{id}[]" value="custom_unit_file{id}" />
+<input type="hidden" name="unit{id}[]" value="custom_unit_file{id}" />
+<input type="hidden" name="unit{id}[]" value="@testCustomUnit{id}" />
+
+<!-- END custom_hoge -->
